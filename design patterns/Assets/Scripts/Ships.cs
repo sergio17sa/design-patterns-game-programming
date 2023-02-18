@@ -12,6 +12,7 @@ namespace Ship
         [SerializeField] private float minVerticalLimit = 0.1f, maxVerticalLimit = 0.9f;
         private Transform _transform;
         private Camera _camera;
+        public Joystick _joystick;
 
         private void Awake()
         {
@@ -42,13 +43,13 @@ namespace Ship
 
         public Vector2 GetDirection()
         {
+
+            return new Vector2(_joystick.Horizontal, _joystick.Vertical);
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
             return new Vector2(horizontal, vertical);
+
         }
-
-
-
 
 
     }
