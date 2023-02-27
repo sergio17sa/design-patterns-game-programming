@@ -11,8 +11,8 @@ namespace Pattern_Adapter
 
         public void SetData<T>(T data, string name)
         {
-            var json = JsonUtility.ToJson(data);
-            var path = Path.Combine(Application.dataPath, name);
+            string json = JsonUtility.ToJson(data);
+            string path = Path.Combine(Application.dataPath, name);
             File.WriteAllText(path, json);
         }
 
