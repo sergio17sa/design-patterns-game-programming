@@ -6,13 +6,13 @@ namespace Ship
 {
 
     public class Ships : MonoBehaviour
-    {
+    {   
         [SerializeField] private float _speed;
         [SerializeField] private float minHorizontalLimit = 0.1f, maxHorizontalLimit = 0.9f;
         [SerializeField] private float minVerticalLimit = 0.1f, maxVerticalLimit = 0.9f;
         private Transform _transform;
         private Camera _camera;
-        public Joystick _joystick;
+        private InputInterface _inputInterface;
 
         private void Awake()
         {
@@ -24,6 +24,10 @@ namespace Ship
         {
             Vector2 direction = GetDirection();
             Move(direction);
+        }
+
+        public void configure(InputInterface inputInterface){
+            _inputInterface = inputInterface;
         }
 
         public void Move(Vector2 direction)
@@ -43,12 +47,7 @@ namespace Ship
 
         public Vector2 GetDirection()
         {
-
-            return new Vector2(_joystick.Horizontal, _joystick.Vertical);
-            float horizontal = Input.GetAxis("Horizontal");
-            float vertical = Input.GetAxis("Vertical");
-            return new Vector2(horizontal, vertical);
-
+            return _inputInterface.GetDirection();
         }
 
 
