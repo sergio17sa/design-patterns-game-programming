@@ -250,7 +250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84d2e42653de7c94a9713eb1ccb098e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
+  _speed: 5.47
   minHorizontalLimit: 0.1
   maxHorizontalLimit: 0.9
   minVerticalLimit: 0.1
@@ -479,6 +479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f238029d46ad3ba42add3956f58e972c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AiInput: 1
   isJoystick: 0
   _joystick: {fileID: 1723407544}
   _ship: {fileID: 139801230}

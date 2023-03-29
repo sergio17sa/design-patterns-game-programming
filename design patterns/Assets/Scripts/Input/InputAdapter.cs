@@ -12,6 +12,10 @@ namespace Ship
             float vertical = Input.GetAxis("Vertical");
             return new Vector2(horizontal, vertical);
         }
+
+        public bool isFireActionPressed(){
+            return Input.GetButton("Fire1");
+        }
     }
 }
 

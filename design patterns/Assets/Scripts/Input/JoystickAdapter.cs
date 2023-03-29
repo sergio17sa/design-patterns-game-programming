@@ -17,6 +17,11 @@ namespace Ship
         {
             return new Vector2(_joystick.Horizontal, _joystick.Vertical);
         }
+
+        public bool isFireActionPressed()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 
 

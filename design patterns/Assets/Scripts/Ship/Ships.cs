@@ -8,16 +8,15 @@ namespace Ship
     public class Ships : MonoBehaviour
     {   
         [SerializeField] private float _speed;
-        [SerializeField] private float minHorizontalLimit = 0.1f, maxHorizontalLimit = 0.9f;
-        [SerializeField] private float minVerticalLimit = 0.1f, maxVerticalLimit = 0.9f;
+
         private Transform _transform;
-        private Camera _camera;
+
         private InputInterface _inputInterface;
+        private CheckLimitsInterface _checkLimitsInterface;
 
         private void Awake()
         {
             _transform = transform;
-            _camera = Camera.main;
         }
 
         private void Update()
@@ -26,30 +25,21 @@ namespace Ship
             Move(direction);
         }
 
-        public void configure(InputInterface inputInterface){
+        public void configure(InputInterface inputInterface, CheckLimitsInterface checkLimitsInterface){
             _inputInterface = inputInterface;
+            _checkLimitsInterface = checkLimitsInterface;
         }
 
         public void Move(Vector2 direction)
         {
             _transform.Translate(direction * (_speed * Time.deltaTime));
-            ClampFinalDirection();
+            _checkLimitsInterface.ClampFinalPosition();
 
         }
-        public void ClampFinalDirection()
-        {
-            Vector3 viewportPoint = _camera.WorldToViewportPoint(_transform.position);
-            viewportPoint.x = Mathf.Clamp(viewportPoint.x, minHorizontalLimit, maxHorizontalLimit);
-            viewportPoint.y = Mathf.Clamp(viewportPoint.y, minVerticalLimit, maxVerticalLimit);
-            _transform.position = _camera.ViewportToWorldPoint(viewportPoint);
-        }
-
-
+        
         public Vector2 GetDirection()
         {
             return _inputInterface.GetDirection();
         }
-
-
     }
 }
