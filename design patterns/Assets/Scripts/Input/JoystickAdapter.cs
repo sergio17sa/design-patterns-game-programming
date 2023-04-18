@@ -7,10 +7,12 @@ namespace Ship
     public class JoystickAdapter : InputInterface
     {
 
+        private readonly JoyButton _joyButton;
         private readonly Joystick _joystick;
-        public JoystickAdapter(Joystick joystick)
+        public JoystickAdapter(Joystick joystick, JoyButton joyButton)
         {
          _joystick = joystick;
+         _joyButton = joyButton;
         }
 
         public Vector2 GetDirection()
@@ -20,7 +22,7 @@ namespace Ship
 
         public bool isFireActionPressed()
         {
-            throw new System.NotImplementedException();
+            return _joyButton.isPressed;
         }
     }
 

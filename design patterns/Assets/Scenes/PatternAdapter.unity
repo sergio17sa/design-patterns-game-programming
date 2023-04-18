@@ -251,10 +251,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 5.47
-  minHorizontalLimit: 0.1
-  maxHorizontalLimit: 0.9
-  minVerticalLimit: 0.1
-  maxVerticalLimit: 0.9
 --- !u!212 &139801231
 SpriteRenderer:
   m_ObjectHideFlags: 0
